@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "FK+rouK8NKAkV3WFUD115Vf7kzbBtDpUFoHRHoj7LYs=",
+  "Hash": "zP9+TA4muHeLmSSSaEhOjQisbqoeMjH0RlZMtrr05XA=",
   "Source": "LearnAPI",
   "BasePath": "_content/LearnAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "LearnAPI\\wwwroot",
+      "Source": "LearnAPI",
+      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
+      "BasePath": "_content/LearnAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

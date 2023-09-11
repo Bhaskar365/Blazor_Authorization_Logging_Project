@@ -99,11 +99,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseCors();   // For cors with origin * , allow all, no policy name required
+app.UseCors();   // For cors with origin * , allow all, no policy name required
 
 
 
-app.UseCors("corspolicy");
+//app.UseCors("corspolicy");
 
 app.UseHttpsRedirection();
 

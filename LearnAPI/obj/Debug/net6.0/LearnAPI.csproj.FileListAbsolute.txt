@@ -100,3 +100,4 @@ C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Serilog.Sinks.File.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\System.Threading.RateLimiting.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\LearnAPI.staticwebassets.runtime.json

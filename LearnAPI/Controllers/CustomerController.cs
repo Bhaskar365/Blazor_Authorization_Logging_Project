@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LearnAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly ICustomerService service;
+        private readonly ICustomerService service; 
         public CustomerController(ICustomerService service) 
         {
             this.service = service;
