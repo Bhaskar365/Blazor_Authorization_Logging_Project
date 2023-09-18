@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8YFiX4DzY0usOwcQM590U/pBq3lc13z2MRoAtQ3OHho=",
+  "Hash": "zP9+TA4muHeLmSSSaEhOjQisbqoeMjH0RlZMtrr05XA=",
   "Source": "LearnAPI",
   "BasePath": "_content/LearnAPI",
   "Mode": "Default",
@@ -15,40 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Upload\\product2\\printer-22072.png",
-      "SourceId": "LearnAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
-      "BasePath": "_content/LearnAPI",
-      "RelativePath": "Upload/product2/printer-22072.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product2\\printer-22072.png"
-    },
-    {
-      "Identity": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Upload\\product2\\rodan-and-fieldslogo-5666.png",
-      "SourceId": "LearnAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
-      "BasePath": "_content/LearnAPI",
-      "RelativePath": "Upload/product2/rodan-and-fieldslogo-5666.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Upload\\product2\\rodan-and-fieldslogo-5666.png"
-    }
-  ]
+  "Assets": []
 }

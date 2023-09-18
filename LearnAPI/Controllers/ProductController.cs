@@ -1,6 +1,8 @@
 ﻿using LearnAPI.Helper;
+using LearnAPI.Repos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearnAPI.Controllers
 {
@@ -9,9 +11,11 @@ namespace LearnAPI.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IWebHostEnvironment environment;
-        public ProductController(IWebHostEnvironment environment) 
+        private readonly LearndataContext context;
+        public ProductController(IWebHostEnvironment environment, LearndataContext context) 
         {
             this.environment = environment;
+            this.context = context;
         }
 
 
@@ -219,7 +223,7 @@ namespace LearnAPI.Controllers
                     DirectoryInfo directoryInfo = new DirectoryInfo(Filepath);
                     FileInfo[] fileInfos = directoryInfo.GetFiles();
                     // System.IO.FileInfo
-                    foreach (FileInfo fileInfo in fileInfos)
+                    foreach (FileInfo fileInfo in fileInfos)  
                     {
                         fileInfo.Delete();
                     }
@@ -235,6 +239,96 @@ namespace LearnAPI.Controllers
                 return NotFound();
             }
         }
+        //upload multiple image to db
+        [HttpPut("DBMultiUploadImage")]
+        public async Task<IActionResult> DBMultiUploadImage(IFormFileCollection fileCollection, string productCode)
+        {
+
+            APIResponse response = new APIResponse();
+            int passCount = 0;
+            int errorCount = 0;
+
+            try
+            {
+                foreach (var file in fileCollection)
+                {
+                    using (MemoryStream stream = new MemoryStream()) 
+                    {
+                        await file.CopyToAsync(stream);
+                        this.context.TblProductimages.Add(new Repos.Models.TblProductimage()
+                        {
+                            Productcode = productCode,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                            Productimage = stream.ToArray(),
+                        });
+                        await this.context.SaveChangesAsync();
+                        passCount++;
+                    }   
+                }
+            }
+            catch (Exception ex)
+            {
+                errorCount++;
+                response.ErrorMessage = ex.Message;
+            }
+            response.ResponseCode = 200;
+            response.Result = passCount + " Files uploaded & " + errorCount + " files failed";
+            return Ok(response);
+        }
+
+        //Get Multiple Image from DB
+        [HttpGet("GetDBMultiImage")]
+        public async Task<IActionResult> GetDBMultiImage(string productCode)
+        {
+            List<string> ImageUrl = new List<string>();
+           
+            try
+            {
+                var _productimage = this.context.TblProductimages.Where(item => item.Productcode == productCode).ToList();
+                if (_productimage != null && _productimage.Count > 0)
+                {
+                    _productimage.ForEach(item => 
+                    {
+                        ImageUrl.Add(Convert.ToBase64String(item.Productimage));
+                    });
+                }
+                else 
+                {
+                    return NotFound();  
+                } 
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return Ok(ImageUrl);
+        }
+
+
+        //Download DB Image 
+        [HttpGet("DBdownload")]
+        public async Task<IActionResult> DBdownload(string productCode)
+        {
+            try
+            {
+                
+                var _productimage = await this.context.TblProductimages.FirstOrDefaultAsync(item => item.Productcode == productCode);
+                
+                if (_productimage != null)
+                {
+                    return File(_productimage.Productimage , "image/png" , productCode + ".png");
+                }
+
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
 
 
         [NonAction]
