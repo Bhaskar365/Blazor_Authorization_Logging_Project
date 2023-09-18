@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Repos\" />
-    <Folder Include="wwwroot\Upload\product\" />
   </ItemGroup>
 
 </Project>

@@ -101,7 +101,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();   // For cors with origin * , allow all, no policy name required
 
-
+app.UseStaticFiles();
 
 //app.UseCors("corspolicy");
 
