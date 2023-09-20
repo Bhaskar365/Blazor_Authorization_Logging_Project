@@ -101,3 +101,10 @@ C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Serilog.Sinks.File.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\System.Threading.RateLimiting.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\LearnAPI.staticwebassets.runtime.json
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\ClosedXML.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\ExcelNumberFormat.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\Irony.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\SixLabors.Fonts.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\System.IO.Packaging.dll
+C:\Nihira Blazor\LearnAPI\LearnAPI\bin\Debug\net6.0\XLParser.dll

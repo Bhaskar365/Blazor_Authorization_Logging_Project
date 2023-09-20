@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zP9+TA4muHeLmSSSaEhOjQisbqoeMjH0RlZMtrr05XA=",
+  "Hash": "n5yT2gK224K5GawfWqhx99qH++8TWHmO+C+BE9T95yA=",
   "Source": "LearnAPI",
   "BasePath": "_content/LearnAPI",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Export\\asdfsfd.txt.txt",
+      "SourceId": "LearnAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
+      "BasePath": "_content/LearnAPI",
+      "RelativePath": "Export/asdfsfd.txt.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Export\\asdfsfd.txt.txt"
+    }
+  ]
 }

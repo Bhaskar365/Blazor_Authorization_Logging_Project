@@ -3,6 +3,8 @@ using LearnAPI.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using ClosedXML.Excel;
+using System.Data;
 
 namespace LearnAPI.Controllers
 {
@@ -11,10 +13,12 @@ namespace LearnAPI.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly ICustomerService service; 
-        public CustomerController(ICustomerService service) 
+        private readonly ICustomerService service;
+        private readonly IWebHostEnvironment environment;
+        public CustomerController(ICustomerService service, IWebHostEnvironment environment) 
         {
             this.service = service;
+            this.environment = environment;
         }
 
         [HttpGet("GetAll")]
@@ -58,6 +62,95 @@ namespace LearnAPI.Controllers
         {
             var data = await this.service.Remove(code);
             return Ok(data);
+        }
+
+        [AllowAnonymous]    
+        [HttpGet("exportExcel")]
+        public async Task<IActionResult> Exportexcel() 
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Code", typeof(string));
+                dt.Columns.Add("Name", typeof(string));
+                dt.Columns.Add("Email", typeof(string));
+                dt.Columns.Add("Phone", typeof(string));
+                dt.Columns.Add("CreditLimit", typeof(int));
+                var data = await this.service.GetAll();
+                if (data != null && data.Count>0) 
+                {
+                    data.ForEach(item => 
+                    {
+                        dt.Rows.Add(item.Code, item.Name, item.Email, item.Phone, item.CreditLimit);
+                    });
+                }
+                using (XLWorkbook wb = new XLWorkbook()) 
+                {
+                    wb.AddWorksheet(dt,"Customer Info");
+                    using (MemoryStream stream = new MemoryStream()) 
+                    {
+                        wb.SaveAs(stream);
+                        return File(stream.ToArray(),"application/vnd.openxmlformats-officedocument.spreadsheet.sheet","Customer.xlsx");
+                    }
+                     
+                }
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet("ExportexcelInProjSolution")]
+        public async Task<IActionResult> ExportexcelInProjSolution()
+        {
+            try
+            {
+                string Filepath = GetFilePath();
+                string excelpath = Filepath + "\\customerInfo.xlsx";
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Code", typeof(string));
+                dt.Columns.Add("Name", typeof(string));
+                dt.Columns.Add("Email", typeof(string));
+                dt.Columns.Add("Phone", typeof(string));
+                dt.Columns.Add("CreditLimit", typeof(int));
+                var data = await this.service.GetAll();
+                if (data != null && data.Count > 0)
+                {
+                    data.ForEach(item =>
+                    {
+                        dt.Rows.Add(item.Code, item.Name, item.Email, item.Phone, item.CreditLimit);
+                    });
+                }
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    wb.AddWorksheet(dt, "Customer Info");
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        wb.SaveAs(stream);
+
+                        if (System.IO.File.Exists(excelpath)) 
+                        {
+                            System.IO.File.Delete(excelpath);
+                        }
+                        wb.SaveAs(excelpath);
+
+                        return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheet.sheet", "Customer.xlsx");
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
+        [NonAction]
+        public string GetFilePath()
+        {
+            return this.environment.WebRootPath + "\\Export";
         }
 
     }
