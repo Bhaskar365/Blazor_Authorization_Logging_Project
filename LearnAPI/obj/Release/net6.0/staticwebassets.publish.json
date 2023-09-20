@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "pjpas0BlWmnPVQzlafnvE9MHF46+5exAmeATMIRlrVs=",
+  "Source": "LearnAPI",
+  "BasePath": "_content/LearnAPI",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "LearnAPI\\wwwroot",
+      "Source": "LearnAPI",
+      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
+      "BasePath": "_content/LearnAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Export\\customerInfo.xlsx",
+      "SourceId": "LearnAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\",
+      "BasePath": "_content/LearnAPI",
+      "RelativePath": "Export/customerInfo.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Export\\customerInfo.xlsx"
+    }
+  ]
+}

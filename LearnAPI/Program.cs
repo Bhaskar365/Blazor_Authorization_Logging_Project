@@ -11,6 +11,7 @@ using Serilog;
 using System.Threading;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using LearnAPI.Repos.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -92,12 +93,53 @@ builder.Services.Configure<JwtSettings>(_jwtSetting);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.MapGet("/minimalapi", ()=> "This is a text");
+
+app.MapGet("/getText", (string x) => x + "is being called");
+
+app.MapGet("/getcustomer", async (LearndataContext db) => 
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    return await db.TblCustomers.ToListAsync();
+});
+
+app.MapGet("/getcustomerbycode/{code}", async (LearndataContext db, string code) =>
+{
+    return await db.TblCustomers.FindAsync(code);
+});
+
+app.MapPost("/createcustomer", async (LearndataContext db, TblCustomer customer) =>
+{
+    await db.TblCustomers.AddAsync(customer);
+    await db.SaveChangesAsync();
+});
+
+app.MapPut("/updatecustomer/{code}", async (LearndataContext db, TblCustomer customer, string code) =>
+{
+    var existdata = await db.TblCustomers.FindAsync(code);
+    if (existdata != null) 
+    {
+        existdata.Name = customer.Name;
+        existdata.Email = customer.Email;
+    }
+    await db.SaveChangesAsync();
+});
+
+app.MapDelete("/removecustomer/{code}", async (LearndataContext db, string code) =>
+{
+    var existdata = await db.TblCustomers.FindAsync(code);
+    if (existdata != null)
+    {
+        db.TblCustomers.Remove(existdata);
+    } 
+    await db.SaveChangesAsync();
+});
+
+// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
 
 app.UseCors();   // For cors with origin * , allow all, no policy name required
 

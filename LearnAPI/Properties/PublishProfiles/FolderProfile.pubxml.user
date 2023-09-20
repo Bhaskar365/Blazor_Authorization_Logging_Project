@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Nihira_Blazor_API_Publish</_PublishTargetUrl>
+    <History>True|2023-09-20T12:14:27.7758525Z;True|2023-09-20T17:37:53.0369961+05:30;True|2023-09-20T17:36:38.4939864+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

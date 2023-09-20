@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Export\\asdfsfd.txt.txt",
-      "PackagePath": "staticwebassets\\Export\\asdfsfd.txt.txt"
+      "Id": "C:\\Nihira Blazor\\LearnAPI\\LearnAPI\\wwwroot\\Export\\customerInfo.xlsx",
+      "PackagePath": "staticwebassets\\Export\\customerInfo.xlsx"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.LearnAPI.Microsoft.AspNetCore.StaticWebAssets.props",
