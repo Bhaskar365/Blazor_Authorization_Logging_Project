@@ -18,7 +18,6 @@ namespace LearnAPI.Controllers
             this.context = context;
         }
 
-
         //Upload Image
         [HttpPut("UploadImage")]
         public async Task<IActionResult> UploadImage(IFormFile formFile, string productCode) 
@@ -243,7 +242,6 @@ namespace LearnAPI.Controllers
         [HttpPut("DBMultiUploadImage")]
         public async Task<IActionResult> DBMultiUploadImage(IFormFileCollection fileCollection, string productCode)
         {
-
             APIResponse response = new APIResponse();
             int passCount = 0;
             int errorCount = 0;
@@ -328,8 +326,6 @@ namespace LearnAPI.Controllers
                 return NotFound();
             }
         }
-
-
 
         [NonAction]
         public string GetFilePath(string productCode) 

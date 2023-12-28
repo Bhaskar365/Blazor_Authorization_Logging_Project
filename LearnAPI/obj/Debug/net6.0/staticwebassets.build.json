@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VMfwuqkmXU+2O8KASo3TA8LYECPIDTTPg+8FXQAxNMU=",
+  "Hash": "f2YYIucAyg0gfNaudADpzgve2m+a+PwoVYLymTlG7DA=",
   "Source": "LearnAPI",
   "BasePath": "_content/LearnAPI",
   "Mode": "Default",
@@ -26,6 +26,8 @@
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
